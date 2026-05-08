@@ -75,7 +75,7 @@ if (form && formMessage) {
 
     try {
 
-      await fetch('https://script.google.com/macros/s/AKfycbzFPcn-kiNob3e8147s5UMwrvAA8AS3tgd-V_Bx6xY33hYEZfQc7TezDUjnzoJpgZcK/exec', {
+      await fetch('https://script.google.com/macros/s/AKfycbynMdvZhD7T2h4WOv0RC-ZyAsKcV3xAD0UwA9DH2D7mp5TMq07bk4grgjCWi1gFCFAB/exec', {
         method: 'POST',
         body: JSON.stringify(formData)
       });
