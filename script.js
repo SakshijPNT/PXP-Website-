@@ -51,10 +51,49 @@ document.querySelectorAll('.feature-card, .pricing-card, .process-step, .stat-ca
   });
 });
 
-if (form && formMessage) {
+/*if (form && formMessage) {
   form.addEventListener('submit', (event) => {
     event.preventDefault();
     formMessage.textContent = 'Thanks. Your inquiry has been queued for a product specialist.';
     form.reset();
   });
+}*/
+
+if (form && formMessage) {
+
+  form.addEventListener('submit', async (event) => {
+
+    event.preventDefault();
+
+    const formData = {
+      name: form.querySelector('[name="name"]').value,
+      email: form.querySelector('[name="email"]').value,
+      company: form.querySelector('[name="company"]').value,
+      phone: form.querySelector('[name="phone"]').value,
+      message: form.querySelector('[name="message"]').value
+    };
+
+    try {
+
+      await fetch('https://script.google.com/macros/s/AKfycbzFPcn-kiNob3e8147s5UMwrvAA8AS3tgd-V_Bx6xY33hYEZfQc7TezDUjnzoJpgZcK/exec', {
+        method: 'POST',
+        body: JSON.stringify(formData)
+      });
+
+      formMessage.textContent =
+        'Thanks. Your inquiry has been submitted successfully.';
+
+      form.reset();
+
+    } catch (error) {
+
+      formMessage.textContent =
+        'Something went wrong. Please try again later.';
+
+      console.error(error);
+
+    }
+
+  });
+
 }
